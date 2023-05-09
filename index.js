@@ -3,6 +3,7 @@ const app = express();
 const dotenv = require('dotenv').config()
 const port = process.env.PORT;
 const cors = require("cors");
+const bodyParser = require('body-parser')
 const database = require("./connection/connect");
 const addUserRouter = require('./routes/addUserRouter')
 const loginRouter = require('./routes/loginRouter')
