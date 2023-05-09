@@ -4,7 +4,6 @@ const incryption = require('crypto')
 const jwt = require('jsonwebtoken')
 
 const login = async (req,res) => {
-    console.log(req.body)
     let decipher = incryption.createDecipher(process.env.ALGORITHM, req.body.password);
     let decrypted = decipher.update(req.body.password, process.env.INPUT_ENCODING, process.env.OUTPUT_ENCODING);
     decrypted += decipher.final(process.env.OUTPUT_ENCODING);
