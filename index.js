@@ -12,6 +12,8 @@ const modifyPointsRouter = require('./routes/modifyPointsRouter')
 app.use(cors({origin:true,credentials:true}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use('/register',addUserRouter)
 app.use('/login',loginRouter)
 app.use('/ranking',rankingRouter)
