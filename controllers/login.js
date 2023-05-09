@@ -17,7 +17,6 @@ const login = async (req,res) => {
             totalpoints:loggedUser.totalpoints,
             username:loggedUser.username,
             email:loggedUser.email,
-            tkn:token
         }
         res.status(200).send(sentData)
     } else {
