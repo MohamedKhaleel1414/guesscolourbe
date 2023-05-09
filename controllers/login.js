@@ -8,12 +8,17 @@ const login = async (req,res) => {
     let decrypted = decipher.update(req.body.password, process.env.INPUT_ENCODING, process.env.OUTPUT_ENCODING);
     decrypted += decipher.final(process.env.OUTPUT_ENCODING);
     let loggedUser = await User.findOne({
-        $and:[{username:req.body.email},{password:decrypted}]
+        $and:[{email:req.body.email},{password:decrypted}]
     })
     if (loggedUser) {
-        let token = jwt.sign(loggedUser._id, process.env.TOKEN_SECRET);
+        let token = jwt.sign(loggedUser._id.toString(), process.env.TOKEN_SECRET);
         res.header("Authentication",token)
-        res.status(200).send(loggedUser)
+        let sentData = {
+            totalpoints:loggedUser.totalpoints,
+            username:loggedUser.username,
+            email:loggedUser.email
+        }
+        res.status(200).send(sentData)
     } else {
         res.status(401).send("Invalid email or password")
     }
