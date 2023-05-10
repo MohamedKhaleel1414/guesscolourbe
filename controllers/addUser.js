@@ -18,7 +18,7 @@ const addUser = async (req, res) => {
     newMan
     .save()
     .then((data) => {
-      res.status(201).send(data);
+      res.status(201).send("New user has been added successfully");
     })
     .catch((err) => {
       console.log(err);
