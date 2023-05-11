@@ -24,6 +24,7 @@ const addUser = async (req, res) => {
       console.log(err);
       res.status(401).send("failed"); 
     });
+    
   } else if(checkEmail){
     res.status(403).send("This email is registered")
   } else if(checkUsername){
