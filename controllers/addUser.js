@@ -24,11 +24,10 @@ const addUser = async (req, res) => {
       console.log(err);
       res.status(401).send("failed"); 
     });
-    
   } else if(checkEmail){
-    res.status(403).send("This email is registered")
+    res.status(200).send("This email is registered")
   } else if(checkUsername){
-    res.status(403).send("This username is used")
+    res.status(200).send("This username is used")
   }
 };
 
