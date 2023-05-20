@@ -9,6 +9,8 @@ const addUserRouter = require('./routes/addUserRouter')
 const loginRouter = require('./routes/loginRouter')
 const rankingRouter = require("./routes/rankingRouter")
 const modifyPointsRouter = require('./routes/modifyPointsRouter')
+const forgetPasswordRouter = require('./routes/forgetPasswordRouter')
+const assignPasswordRouter = require('./routes/assignPasswordRouter')
 
 app.use(cors({origin:true,credentials:true}));
 app.use(express.urlencoded({ extended: true }));
@@ -19,6 +21,8 @@ app.use('/register',addUserRouter)
 app.use('/login',loginRouter)
 app.use('/ranking',rankingRouter)
 app.use('/points',modifyPointsRouter)
+app.use('/forgetpassword',forgetPasswordRouter)
+app.use('/assignpassword',assignPasswordRouter)
 
 app.listen(port, () => console.log(`I'm listening to port ${port}!`));
 
