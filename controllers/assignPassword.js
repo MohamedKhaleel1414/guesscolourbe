@@ -1,9 +1,9 @@
 const User = require("../models/users");
 const incryption = require("crypto");
-var emailSent;
+var emailSent = "";
 
 const saveEmail = async (req, res) => {
-  if (req.body.email) {
+  if (req.body.email && emailSent === "") {
     emailSent = req.body.email;
     res.status(200).send("Email Saved");
   } else {
@@ -12,8 +12,8 @@ const saveEmail = async (req, res) => {
 };
 
 const assignPass = async (req, res) => {
-    console.log(emailSent)
-  if (typeof emailSent !== "undefined") {
+  // console.log(emailSent)
+  if (emailSent !== "") {
     let userlogged = await User.findOne({ email: emailSent }, {});
     if (userlogged) {
       let cipher = incryption.createCipher(
@@ -30,10 +30,12 @@ const assignPass = async (req, res) => {
       userlogged
         .save()
         .then((data) => {
+          emailSent = "";
           res.status(201).send("Password updated successfully");
         })
         .catch((err) => {
           console.log(err);
+          emailSent = "";
           res.status(401).send("failed");
         });
     }
