@@ -31,7 +31,7 @@ const yourRank = async (req, res) => {
         })
       );
       let sentData = {
-        position:sentIndex
+        position:sentIndex+1
       }
       res.status(200).send(sentData);
     } else {

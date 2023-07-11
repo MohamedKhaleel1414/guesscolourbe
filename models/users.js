@@ -22,6 +22,10 @@ const usersCollection = new mongoose.Schema({
     registrationDate:{
         type:Date,
         default:Date.now()
+    },
+    generatedCode:{
+        type:String,
+        default:"null",
     }
 },{
     strict:true,
