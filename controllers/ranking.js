@@ -38,7 +38,7 @@ const yourRank = async (req, res) => {
         res.status(404).send("User not found")
     }
   } else {
-    res.status(404).send("No data to show")
+    res.status(401).send("No data to show")
   }
 };
 
