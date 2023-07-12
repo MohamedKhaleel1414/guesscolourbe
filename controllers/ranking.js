@@ -19,7 +19,7 @@ const yourRank = async (req, res) => {
   });
   if (list) {
     let user = await User.findOne(
-      { username: req.body.username },
+      { username: req.params.username },
       { username: 1, totalpoints: 1, _id: 0 }
     );
     if (user) {
